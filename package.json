@@ -4,6 +4,9 @@
   "bin": {
     "lictool": "./cli.ts"
   },
+  "scripts": {
+    "build": "bun build cli.ts --compile --outfile=clitool"
+  },
   "type": "module",
   "module": "index.ts",
   "dependencies": {
