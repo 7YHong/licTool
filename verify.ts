@@ -1,5 +1,4 @@
 import forge from "node-forge";
-import { loadKeys } from "./common";
 
 const ED25519 = forge.pki.ed25519;
 const decode64 = forge.util.decode64;
@@ -12,7 +11,7 @@ export const verify = (licStr: string, publicKey: string) => {
   const verified = ED25519.verify({
     md,
     signature: decode64(signature ?? ""),
-    publicKey: decode64(loadKeys().publicKey),
+    publicKey: decode64(publicKey),
   });
   if (!verified) {
     throw new Error("签名验证失败，数据可能被篡改");

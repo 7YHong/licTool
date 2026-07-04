@@ -1,10 +1,10 @@
 #!/usr/bin/env bun
+import { loadKeys } from "./common";
 import { generate } from "./generate";
 import { verify } from "./verify";
-import { loadKeys } from "./common";
 
 interface CliOptions {
-  command: "generate" | "verify";
+  command: "generate" | "verify" | "help";
   value?: string;
 }
 

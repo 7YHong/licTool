@@ -1,5 +1,4 @@
 import forge from "node-forge";
-import { loadKeys } from "./common";
 
 const ED25519 = forge.pki.ed25519;
 const decode64 = forge.util.decode64;
@@ -15,7 +14,7 @@ export const generate = (payloadStr: string, privateKey: string) => {
   // // 使用私钥签名
   var signature = ED25519.sign({
     md: md,
-    privateKey: decode64(loadKeys().privateKey),
+    privateKey: decode64(privateKey),
   });
 
   // Base64 编码签名 (使用 forge 的编码器确保一致性)
