@@ -5,6 +5,12 @@ const decode64 = forge.util.decode64;
 
 export const verify = (licStr: string, publicKey: string) => {
   const [payload, signature] = licStr.split(".");
+  if(!payload || !signature) {
+    throw new Error("授权码格式错误");
+  }
+  if(decode64(signature).length !== 64) {
+    throw new Error("授权码格式错误: 签名长度错误");
+  }
   // 生成 SHA-256 摘要
   const md = forge.md.sha256.create();
   md.update(payload ?? "");
